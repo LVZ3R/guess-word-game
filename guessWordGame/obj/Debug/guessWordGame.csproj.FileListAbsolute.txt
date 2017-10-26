@@ -1,0 +1,10 @@
+C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\bin\Debug\guessWordGame.exe.config
+C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\bin\Debug\guessWordGame.exe
+C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\bin\Debug\guessWordGame.pdb
+C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.csprojResolveAssemblyReference.cache
+C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.Form1.resources
+C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.Properties.Resources.resources
+C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.csproj.GenerateResource.Cache
+C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.csproj.CoreCompileInputs.cache
+C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.exe
+C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.pdb

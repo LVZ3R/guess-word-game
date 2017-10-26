@@ -13,42 +13,91 @@ namespace guessWordGame
     public partial class Form1 : Form
     {
         //два динамічних масиви питань та відповідей
+        //питанню під індексом 0 повинна відповідати відповідь з масиву відвовідей під індексом (0)
         public List<string> questionsArray = new List<string>();
         public List<string> answersArray = new List<string>();
+        Task taskProvide = new Task();
 
         public Form1()
         {
             InitializeComponent();
+            //створення п'яти питань і відповідей для тестування програми
+            questionsArray.Add("Столиця України?");
+            answersArray.Add("Київ");
+            questionsArray.Add("Столиця Росії?");
+            answersArray.Add("Москва");
+            questionsArray.Add("Столиця Білорусі?");
+            answersArray.Add("Мінськ");
+            questionsArray.Add("Столиця США?");
+            answersArray.Add("Вашингтон");
+            questionsArray.Add("Столиця Німеччини?");
+            answersArray.Add("Берлін");
         }
 
-        class Task
+        private void button1_Click(object sender, EventArgs e)
         {
-            private string answer;
-            private string quest;
+            taskProvide.userAnswer = textBox1.Text;
+            if (taskProvide.compareAnswers())
+                MessageBox.Show("Відповідь вірна!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Відповідь невірна!", "Невдача", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
-            //конструктор без параметрів
-            Task ()
-            {
-                this.answer = "";
-                this.quest = "";
+        private void button2_Click(object sender, EventArgs e)
+        {
+            button1.Enabled = true;
+            Random rand = new Random();
+            int questIndex = rand.Next(0, questionsArray.Count - 1);
+            taskProvide.setNewTask(questionsArray[questIndex], answersArray[questIndex]);
+            richTextBox1.Text = taskProvide.getTask();
+        }
+    }
 
-                throw new Exception("Був викликаний пустий конструктор. Відсутні дані для відображення.");
-            }
+    public partial class Task
+    {
+        private string answer;
+        private string quest;
+        public string userAnswer;
 
-            //конструктор з параметрами
-            //викликається у випадку, якщо лінь створювати масив питань і відповідей
-            Task (string newQuestion, string questAnswer)
-            {
-                this.answer = questAnswer;
-                this.quest = newQuestion;
-            }
+        //конструктор без параметрів
+        public Task()
+        {
+            this.answer = "";
+            this.quest = "";
+        }
 
-            //конструктор з параметрами
-            //передаються два індекси - індекс запитання з масиву питань і індекс відповіді на це питання
-            Task (int questID, int answerID)
-            {
-                   
-            }
+        //конструктор з параметрами
+        //викликається у випадку, якщо лінь створювати масив питань і відповідей
+        public Task(string newQuestion, string questAnswer)
+        {
+            this.answer = questAnswer;
+            this.quest = newQuestion;
+        }
+
+        //конструктор з параметрами
+        //передаються два масиви - масив питань і масив відповідей
+        public Task(List<string> quests, List<string> answers)
+        {
+            Random rand = new Random();
+            //якщо раптом масиви неоднакового розміру, то за макс. значення рандому беремо кількість елементів меншого розміру
+            int minCount = Math.Min(quests.Count, answers.Count);
+            //отримуємо з масивів питання і відповідь
+            this.quest = quests[rand.Next(0, minCount - 1)];
+            this.answer = answers[rand.Next(0, minCount - 1)];
+        }
+
+        public bool compareAnswers()
+        {
+            if (this.answer == userAnswer) return true; else
+            return false;
+        }
+
+        public string getTask () { return this.quest; }
+
+        public void setNewTask(string newQuest, string newAnswer)
+        {
+            answer = newAnswer;
+            quest = newQuest;
         }
     }
 }

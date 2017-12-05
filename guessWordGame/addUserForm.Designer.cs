@@ -113,6 +113,7 @@
             // maleBtn
             // 
             this.maleBtn.AutoSize = true;
+            this.maleBtn.Enabled = false;
             this.maleBtn.Location = new System.Drawing.Point(97, 133);
             this.maleBtn.Name = "maleBtn";
             this.maleBtn.Size = new System.Drawing.Size(62, 17);
@@ -124,6 +125,7 @@
             // femaleBtn
             // 
             this.femaleBtn.AutoSize = true;
+            this.femaleBtn.Enabled = false;
             this.femaleBtn.Location = new System.Drawing.Point(189, 133);
             this.femaleBtn.Name = "femaleBtn";
             this.femaleBtn.Size = new System.Drawing.Size(53, 17);

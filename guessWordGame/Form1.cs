@@ -35,7 +35,7 @@ namespace guessWordGame
             answersArray.Add("Берлін");
         }
 
-        UsersDaoImpl users = new UsersDaoImpl();
+        public UsersDaoImpl users = new UsersDaoImpl();
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -59,8 +59,13 @@ namespace guessWordGame
         {
             addUserForm child = new addUserForm();
             child.Owner = this;
-            child.ShowDialog();
             this.Enabled = false;
+            child.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(users.all(), "Всі користувачі", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 
@@ -112,7 +117,7 @@ namespace guessWordGame
         }
     }
 
-    class User
+    public class User
     {
         protected int id;
         public String Email { get; set; }
@@ -163,9 +168,14 @@ namespace guessWordGame
         void update(int _id, User user);
         String find(String _login, String _password);
     }
-    class UsersDaoImpl : IUserDao
+    public class UsersDaoImpl : IUserDao
     {
         private List<User> dataList = new List<User>();
+
+        public int getSize()
+        {
+            return dataList.Count;
+        }
 
         public String all()
         {

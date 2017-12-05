@@ -8,3 +8,4 @@ C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.c
 C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.csproj.CoreCompileInputs.cache
 C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.exe
 C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.pdb
+C:\Users\LVZ3R\Downloads\guess-word-game\guessWordGame\obj\Debug\guessWordGame.addUserForm.resources

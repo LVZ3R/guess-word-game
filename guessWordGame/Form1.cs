@@ -35,6 +35,8 @@ namespace guessWordGame
             answersArray.Add("Берлін");
         }
 
+        UsersDaoImpl users = new UsersDaoImpl();
+
         private void button1_Click(object sender, EventArgs e)
         {
             taskProvide.userAnswer = textBox1.Text;
@@ -51,6 +53,14 @@ namespace guessWordGame
             int questIndex = rand.Next(0, questionsArray.Count - 1);
             taskProvide.setNewTask(questionsArray[questIndex], answersArray[questIndex]);
             richTextBox1.Text = taskProvide.getTask();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            addUserForm child = new addUserForm();
+            child.Owner = this;
+            child.ShowDialog();
+            this.Enabled = false;
         }
     }
 

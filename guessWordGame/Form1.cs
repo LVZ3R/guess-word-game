@@ -100,4 +100,39 @@ namespace guessWordGame
             quest = newQuest;
         }
     }
+
+    class User
+    {
+        protected int id;
+        public String Email { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public bool Gender { get; set; }
+        public int BirthYear { get; set; }
+        public String Login { get; set; }
+        public String PasswordHash { get; set; }
+        public int Score { get; set; }
+
+        public User(int _id, String _email, String _firstName,
+            String _lastName, bool _gender, int _birthYear,
+            String _login, String _passwordHash, int _score)
+        {
+            id = _id;
+            Email = _email;
+            FirstName = _firstName;
+            LastName = _lastName;
+            Gender = _gender;
+            Login = _login;
+            PasswordHash = _passwordHash;
+            Score = _score;
+            BirthYear = _birthYear;
+        }
+
+        public String getInfo()
+        {
+            return Login + ", " + FirstName + " " + LastName +
+                ". Age: " + (DateTime.Now.Year - BirthYear) +
+                ", Email: " + Email + ". Score: " + Score;
+        }
+    }
 }

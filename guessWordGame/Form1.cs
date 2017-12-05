@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace guessWordGame
 {
@@ -123,7 +124,16 @@ namespace guessWordGame
             LastName = _lastName;
             Gender = _gender;
             Login = _login;
-            PasswordHash = _passwordHash;
+
+            MD5 md5Hasher = MD5.Create();
+            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(_passwordHash));
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+            {
+                builder.Append(data[i].ToString("x2"));
+            }
+            PasswordHash = builder.ToString();
+
             Score = _score;
             BirthYear = _birthYear;
         }
@@ -133,6 +143,61 @@ namespace guessWordGame
             return Login + ", " + FirstName + " " + LastName +
                 ". Age: " + (DateTime.Now.Year - BirthYear) +
                 ", Email: " + Email + ". Score: " + Score;
+        }
+    }
+
+    interface IUserDao
+    {
+        String all();
+        void add(User user);
+        void update(int _id, User user);
+        String find(String _login, String _password);
+    }
+    class UsersDaoImpl : IUserDao
+    {
+        private List<User> dataList = new List<User>();
+
+        public String all()
+        {
+            String result = "";
+            for (int i = 0; i < dataList.Count; i++)
+            {
+                result += dataList[i].getInfo() + Environment.NewLine;
+            }
+
+            return result;
+        }
+
+        public void add(User user)
+        {
+            dataList.Add(user);
+        }
+
+        public void update(int _id, User user)
+        {
+            if (_id < dataList.Count)
+            {
+                dataList[_id] = user;
+            }
+        }
+
+        public String find(String _login, String _password)
+        {
+            String result = "No results" + Environment.NewLine;
+
+            for (int i = 0; i < dataList.Count; i++)
+            {
+                if (dataList[i].Login == _login)
+                {
+                    if(dataList[i].PasswordHash == _password)
+                    {
+                        result = dataList[i].getInfo() + Environment.NewLine;
+                        break;
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }
